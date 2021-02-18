@@ -8,8 +8,67 @@
 enum class Compass {N, S, W, E};
 
 // Write your code here
-class GPS {
-
+class GPS{
+        // Member Variables
+        double latitude;
+        Compass latitudeDir;
+        double longitude;
+        Compass longitudeDir;
+        public:
+            double getLatitude(){
+                  return latitude;
+                }
+                Compass getLatitudeDirection(){
+                        return latitudeDir;
+                }
+                double getLongitude(){
+                        return longitude;
+                }
+                Compass getLongitudeDirection(){
+                        return longitudeDir;
+                }
+                // Default Constructor
+                GPS(){
+                        latitude = 0;
+                        longitude = 0;
+                        latitudeDir = Compass::N;
+                        longitudeDir = Compass::W;
+                }
+                // Parameterised Constructors
+                GPS(double latitude, double longitude){
+                        // Check if latitude is in range
+                        if(latitude>=0 && latitude<=90)
+                                this->latitude = latitude;
+                        else
+                                this->latitude = 0;
+                        // Check if longitude is in range
+                        if(longitude>=0 && longitude<=180)
+                                this->longitude = longitude;
+                        else
+                                this->longitude = 0;
+                        latitudeDir = Compass::N;
+                        longitudeDir = Compass::W;
+                }
+                GPS(double latitude, double longitude, Compass latitudeDir, Compass longitudeDir){
+                        // Check if latitude is in range
+                        if(latitude>=0 && latitude<=90){
+                                this->latitude = latitude;
+                                this->latitudeDir = latitudeDir;
+                        }
+                        else{
+                                this->latitude = 0;
+                                this->latitudeDir = Compass::N;
+                        }
+                        // Check if longitude is in range
+                        if(longitude>=0 && longitude<=180){
+                                this->longitude = longitude;
+                                this->longitudeDir = longitudeDir;   
+                        }
+                        else{
+                                this->longitude = 0;
+                                this->longitudeDir = Compass::W;
+                        }
+                }
 };
 
 //------------------------------
